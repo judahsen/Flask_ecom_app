@@ -1,0 +1,4 @@
+Ecomvenv
+.env
+__pycache__
+migrations
