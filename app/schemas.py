@@ -1,19 +1,20 @@
-from . import ma
-from .models import Product, Cart
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, auto_field
+from marshmallow import Schema, fields
 
-class ProductSchema(ma.SQLAlchemyAutoSchema):
-    class Meta:
-        model = Product
-        include_fk = True
-        load_instance = True
+class UserSchema(Schema):
+    id = fields.Str(dump_only=True)
+    username = fields.Str(required=True)
+    email = fields.Str(required=True)
+    password = fields.Str(required=True, load_only = True)
     
-    id = ma.auto_field()
-    name =ma.auto_field()
 
-class CartSchema(ma.SQLAlchemyAutoSchema):
-    items = ma.Nested(ProductSchema, many=True)
-    class Meta:
-        model = Cart
-        include_relationships = True
-        load_instance = True
+class ProductSchema(Schema):
+    id = fields.Str(dump_only=True)
+    name = fields.Str()
+    price = fields.Str(required=True)
+    description = fields.Int(required=True)
+
+class CartSchema(Schema):
+    id = fields.Str(dump_only=True)
+    title = fields.Str()
+    body = fields.Str(required=True)
+    author = fields.Int(required=True)
