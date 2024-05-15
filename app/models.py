@@ -42,6 +42,14 @@ class Product(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def to_dict(self):
+        return {
+            'id':self.id,
+            'name':self.name,
+            'price':self.price,
+            'description':self.description 
+        }
+
 # class Cart(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -51,11 +59,11 @@ class Product(db.Model):
 class Team(db.Model):
     id= db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    pok1 = db.Column(db.Integer, db.ForeignKey('pokemon.id'))
-    pok2 = db.Column(db.Integer, db.ForeignKey('pokemon.id'))
-    pok3 = db.Column(db.Integer, db.ForeignKey('pokemon.id'))
-    pok4 = db.Column(db.Integer, db.ForeignKey('pokemon.id'))
-    pok5 = db.Column(db.Integer, db.ForeignKey('pokemon.id'))
+    pok1 = db.Column(db.Integer)
+    pok2 = db.Column(db.Integer)
+    pok3 = db.Column(db.Integer)
+    pok4 = db.Column(db.Integer)
+    pok5 = db.Column(db.Integer)
 
     def __init__(self, user_id, pok1=None,pok2=None,pok3=None,pok4=None,pok5=None):
         self.user_id = user_id
