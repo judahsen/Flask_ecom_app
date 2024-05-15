@@ -7,6 +7,9 @@ class ProductSchema(ma.SQLAlchemyAutoSchema):
         model = Product
         include_fk = True
         load_instance = True
+    
+    id = ma.auto_field()
+    name =ma.auto_field()
 
 class CartSchema(ma.SQLAlchemyAutoSchema):
     items = ma.Nested(ProductSchema, many=True)
