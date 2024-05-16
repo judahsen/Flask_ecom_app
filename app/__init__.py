@@ -24,8 +24,8 @@ ma=Marshmallow(app)
 app.register_blueprint(api)
 
 
-from ..resources.post import routes
-from . import models
+# from ..resources.post import routes
+# from . import models
 
 
 
